@@ -41,3 +41,18 @@ def molecular_detection_probability(n_molecules, vaf, threshold):
     """Find the probability of detecting a genuine mutant molecules."""
     probability = binom.sf(threshold-1, n_molecules, vaf)
     return probability
+
+def find_minimum_molecules(
+    vaf,
+    error_rate,
+    target_sensitivity,
+    target_specificity
+):
+    """Find the minimum molecular sample size meeting both targets."""
+    for n_molecules in range(3000, 20001):
+        for threshold in range(1, 11):
+            sensitivity = molecular_detection_probability(n_molecules, vaf, threshold)
+            specificity = 1 - false_positive_probability(n_molecules, error_rate, threshold)
+            if sensitivity >= target_sensitivity and specificity >= target_specificity:
+                return n_molecules
+    return None
