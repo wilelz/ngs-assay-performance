@@ -20,7 +20,7 @@ def minimum_depth(
     target_specificity=0.99,
     max_depth=10000
 ):       
-     """Find the minimum depth meeting both performance targets."""  
+    """Find the minimum depth meeting both performance targets."""  
     for depth in range(1, max_depth + 1):
         sensitivity = calculate_sensitivity(depth, vaf, threshold)
         specificity = calculate_specificity(depth, error_rate, threshold)
