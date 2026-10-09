@@ -31,7 +31,6 @@ def minimum_depth(
 
     return None
  
-    
 def false_positive_probability(n_molecules, error_rate, threshold):
     """Find the probability of returning a false positive result."""
     probability = binom.sf(threshold - 1, n_molecules, error_rate)
