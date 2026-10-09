@@ -55,3 +55,19 @@ def test_false_positive_probability():
 
     assert round(result, 4) == 0.0036
 
+def find_minimum_molecules():
+    for n_molecules in range(3000, 20001):
+        for threshold in range(1, 11):
+            sensitivity = molecular_detection_probability(n_molecules, 0.001, threshold)
+            specificity = 1 - false_positive_probability(n_molecules, 0.0001, threshold)
+
+            if sensitivity >= 0.90 and specificity >= 0.99:
+                return n_molecules
+    return None
+
+result = find_minimum_molecules()
+
+print(result)
+
+assert result == 6679
+
