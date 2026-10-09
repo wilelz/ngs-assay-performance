@@ -48,4 +48,10 @@ def test_molecular_detection_probability():
     result = molecular_detection_probability(3000, 0.001, 3)
 
     assert round(result, 4) == 0.5769
+    
+
+def test_false_positive_probability():
+    result = false_positive_probability(3000, 0.0001, 3)
+
+    assert round(result, 4) == 0.0036
 
