@@ -13,6 +13,7 @@ def calculate_specificity(depth, error_rate, threshold):
 
 
 def minimum_depth(
+     """Find the minimum depth meeting both performance targets."""
     vaf,
     error_rate,
     threshold,
@@ -20,8 +21,20 @@ def minimum_depth(
     target_specificity=0.99,
     max_depth=10000
 ):
-    """Find the minimum depth meeting both performance targets."""
+   
+    
+def false_positive_probability(n_molecules, error_rate, threshold):
+    """Find the probability of returning a false positive result."""
+    probability = binom.sf(threshold - 1, n_molecules, error_rate)
+    return probability
+  
 
+def molecular_detection_probability(n_molecules, vaf, threshold):
+    """Find the probability of detecting a genuine mutant molecules."""
+    probability = binom.sf(threshold-1, n_molecules, vaf)
+    return probability
+    
+      
     for depth in range(1, max_depth + 1):
         sensitivity = calculate_sensitivity(depth, vaf, threshold)
         specificity = calculate_specificity(depth, error_rate, threshold)
