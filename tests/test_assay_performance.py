@@ -13,7 +13,8 @@ from assay_performance import (
     calculate_specificity,
     minimum_depth,
     false_positive_probability,
-    molecular_detection_probability
+    molecular_detection_probability,
+    find_minimum_molecules
 )
 
 
