@@ -12,6 +12,8 @@ from assay_performance import (
     calculate_sensitivity,
     calculate_specificity,
     minimum_depth,
+    false_positive_probability,
+    molecular_detection_probability
 )
 
 
@@ -40,3 +42,10 @@ def test_minimum_depth():
     )
 
     assert result == 628
+
+
+def test_molecular_detection_probability():
+    result = molecular_detection_probability(3000, 0.001, 3)
+
+    assert round(result, 4) == 0.5769
+
